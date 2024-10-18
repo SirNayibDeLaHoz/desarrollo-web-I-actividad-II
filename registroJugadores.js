@@ -72,6 +72,9 @@ document.getElementById('registroForm').addEventListener('submit', function (eve
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
     const posicion = document.getElementById('posicion').value;
 
+    // Expresion regular correo electronico
+    const regext_email = /^[A-Za-z0-9._%+-/}{~^]+@[a-zA-Z0-9]+((\-|\.)?[a-zA-Z0-9])*\.[a-zA-Z0-9]{2,3}$/;
+    
     // Validaciones
 
     // 1. Validar que todos los campos sean obligatorios
@@ -79,6 +82,7 @@ document.getElementById('registroForm').addEventListener('submit', function (eve
         Swal.fire({
             icon: "error",
             title: "Oops...",
+            width: 500,
             text: "Todos los campos son obligatorios."
         });
         return;
@@ -89,6 +93,7 @@ document.getElementById('registroForm').addEventListener('submit', function (eve
         Swal.fire({
             icon: "error",
             title: "Oops...",
+            width: 500,
             text: "La cédula solo puede contener números."
         });
         return;
@@ -99,17 +104,30 @@ document.getElementById('registroForm').addEventListener('submit', function (eve
         Swal.fire({
             icon: "error",
             title: "Oops...",
+            width: 500,
             text: "Ya existe jugador"
         });
         return;
     }
 
-    // 3. Validar que el telefono solo contenga números
-    if (!/^\d+$/.test(cedula)) {
+    // 4. Validar que el telefono solo contenga números
+    if (!/^\d+$/.test(telefono)) {
         Swal.fire({
             icon: "error",
             title: "Oops...",
+            width: 500,
             text: "El Teléfono solo puede contener números."
+        });
+        return;
+    }
+
+    // 5. Validar correo electronico
+    if (!regext_email.test(email)) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            width: 500,
+            text: "La dirección de correo electronico no es valida."
         });
         return;
     }
@@ -134,7 +152,17 @@ document.getElementById('registroForm').addEventListener('submit', function (eve
 
     // Recargar la tabla con los nuevos jugadores
     cargarJugadores();
+
+    Swal.fire({
+        icon: "success",
+        title: "Jugador registrado",
+        width: 500,
+        html: `Jugador con identificación <b>${nuevoJugador.cedula} </b>registrado exitosamente.`
+    });
 });
 
 // Evento para listar los jugadores iniciales
 document.getElementById('listarJugadoresBtn').addEventListener('click', cargarJugadores);
+
+// Recargar la tabla con los nuevos jugadores
+cargarJugadores();
