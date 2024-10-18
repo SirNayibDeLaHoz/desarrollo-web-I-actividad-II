@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="text" id="telefono" class="form-control" required>
+                    <input type="number" id="telefono" class="form-control" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
@@ -81,6 +81,7 @@
                         <option value="Defensa">Defensa</option>
                         <option value="Mediocampista">Mediocampista</option>
                         <option value="Delantero">Delantero</option>
+                        <option value="Extremo izquierdo">Extremo izquierdo</option>
                     </select>
                 </div>
             </div>
@@ -88,26 +89,31 @@
         </form>
 
         <!-- Botón para listar jugadores estáticos -->
-        <button id="listarJugadoresBtn" class="btn btn-secondary mb-3">Listar Jugadores Iniciales</button>
+        <button id="listarJugadoresBtn" class="btn btn-secondary mb-3">Listar Jugadores</button>
 
         <!-- Tabla de jugadores -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Posición</th>
-                </tr>
-            </thead>
-            <tbody id="jugadoresTableBody">
-                <!-- Filas de jugadores -->
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Posición</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jugadoresTableBody">
+                        <!-- Filas de jugadores generadas por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->
